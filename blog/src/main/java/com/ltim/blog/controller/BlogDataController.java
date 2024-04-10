@@ -23,17 +23,28 @@ public class BlogDataController {
 
     @PostMapping("/create/blog")
     public ResponseEntity<BlogData> createBlog(@RequestBody BlogData blogData) {
+        if (blogData == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
         return new ResponseEntity<BlogData>(blogDataService.createBlog(blogData), HttpStatus.CREATED);
     }
 
     @GetMapping("/get/allblogs")
     public ResponseEntity<List<BlogData>> getAllBlogs() {
+        List<BlogData> allblogs = blogDataService.viewAllBlogs();
+        if (allblogs == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
         return new ResponseEntity<List<BlogData>>(blogDataService.viewAllBlogs(), HttpStatus.OK);
     }
 
-    @GetMapping("/get/myblogs/{email}")
-    public ResponseEntity<List<BlogData>> myBlogs(@PathVariable String email) {
-        List<BlogData> blog = blogDataService.viewMyBlogs(email);
+    @GetMapping("/get/myblogs/{username}")
+    public ResponseEntity<List<BlogData>> myBlogs(@PathVariable String username) {
+
+        List<BlogData> blog = blogDataService.viewMyBlogs(username);
+        if (blog == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
         return new ResponseEntity<List<BlogData>>(blog, HttpStatus.OK);
     }
 }

@@ -15,7 +15,7 @@ import com.ltim.blog.entity.BlogData;
 @Repository
 public interface BlogRepository extends JpaRepository<BlogData, Long>{
 
-    @Query("SELECT b FROM BlogData b WHERE b.user.emailId = :email")
-    public List<BlogData> findBlogByEmail(String email);
+    @Query("SELECT b FROM BlogData b WHERE b.user.username = :username")
+    public List<BlogData> findBlogByUsername(String username);
     
 } 

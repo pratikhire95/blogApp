@@ -17,8 +17,8 @@ public class BlogDataService {
         return blogRepository.save(blog);
     }
 
-    public List<BlogData> viewMyBlogs(String email) {
-        return blogRepository.findBlogByEmail(email);
+    public List<BlogData> viewMyBlogs(String username) {
+        return blogRepository.findBlogByUsername(username);
 
     }
 
