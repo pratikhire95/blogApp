@@ -45,8 +45,8 @@ public class SecurityConfig {
                 // Configure authorization rules
                 .authorizeHttpRequests(requests -> requests
                         // Permit access to login and registration endpoints
-                        .requestMatchers("/api/users/login").permitAll()
-                        .requestMatchers("/api/users/register").permitAll()
+                        .requestMatchers("/api/v1/login").permitAll()
+                        .requestMatchers("/api/v1/register").permitAll()
                         // Require authentication for all other endpoints under "/api"
                         .requestMatchers("/api/**").authenticated())
                 // Configure session management to be STATELESS

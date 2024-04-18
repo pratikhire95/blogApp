@@ -63,7 +63,7 @@ public class RegisterLoginController {
         User user = userService.findByUsername(loginRequest.getUsername());
 
         // Return login response with JWT token and user details
-        return ResponseEntity.ok(new LoginResponse(token, user.getUsername(), user.getEmailId(), user.getRole()));
+        return ResponseEntity.ok(new LoginResponse(token, user.getUsername(), user.getEmail(), user.getRole()));
     }
 
     @GetMapping()
